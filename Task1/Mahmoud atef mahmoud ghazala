@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+// دالة لتنفيذ خوارزمية الإدراج (Insertion Sort)
+void insertionSort(int arr[], int n) {
+    // نبدأ من العنصر الثاني في المصفوفة
+    for (int i = 1; i < n; i++) {
+        // العنصر الذي سيتم إدراجه في مكانه الصحيح
+        int key = arr[i];
+        int j = i - 1;
+
+        // نقل العناصر التي أكبر من الـ key واحدة للأمام
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j = j - 1;
+        }
+        // وضع الـ key في المكان الصحيح
+        arr[j + 1] = key;
+    }
+}
+
+// دالة لعرض العناصر في المصفوفة
+void printArray(int arr[], int size) {
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+// البرنامج الرئيسي
+int main() {
+    int arr[] = {12, 11, 13, 5, 6};  // مصفوفة للاختبار
+    int n = sizeof(arr) / sizeof(arr[0]);
+
+    cout << "المصفوفة قبل الترتيب: ";
+    printArray(arr, n);
+
+    // تنفيذ الخوارزمية
+    insertionSort(arr, n);
+
+    cout << "المصفوفة بعد الترتيب: ";
+    printArray(arr, n);
+
+    return 0;
+}
